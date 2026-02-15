@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  <h2>Welcome back</h2>
+  <p class="subtitle">Log in to search and view books.</p>
+
+  <div class="card">
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+    <form class="form" method="post">
+      <div>
+        <label for="username">Username</label>
+        <input id="username" name="username" placeholder="Your username" required>
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Your password" required>
+      </div>
+
+      <div class="row">
+        <button class="btn" type="submit">Login</button>
+        <a class="btn btn-secondary" href="{{ url_for('register') }}">Create an account</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

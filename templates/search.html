@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}Search{% endblock %}
+
+{% block content %}
+  <h2>Search Books</h2>
+  <p class="subtitle">Search by ISBN, title, or author.</p>
+
+  <div class="card">
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+    <form class="row" method="post" style="margin-top:10px;">
+      <input name="q" placeholder="Try: Harry, Tolkien, 0380795272" value="{{ q or '' }}" required>
+      <button class="btn" type="submit">Search</button>
+    </form>
+
+    {% if books %}
+      <div class="hr"></div>
+      <div class="small">Showing up to 50 results{% if q %} for <b>{{ q }}</b>{% endif %}.</div>
+
+      <div class="results">
+        {% for b in books %}
+          <div class="result">
+            <a href="{{ url_for('book', isbn=b.isbn) }}">{{ b.title }}</a>
+            <div class="meta">{{ b.author }} • {{ b.year }} • ISBN: {{ b.isbn }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    {% elif q %}
+      <div class="hr"></div>
+      <div class="small">No results found for <b>{{ q }}</b>.</div>
+    {% endif %}
+  </div>
+{% endblock %}

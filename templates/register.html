@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+  <h2>Create an account</h2>
+  <p class="subtitle">Pick a username and password to get started.</p>
+
+  <div class="card">
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+    <form class="form" method="post">
+      <div>
+        <label for="username">Username</label>
+        <input id="username" name="username" placeholder="e.g. Name123" required>
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Choose a password" required>
+      </div>
+
+      <div class="row">
+        <button class="btn" type="submit">Register</button>
+        <a class="btn btn-secondary" href="{{ url_for('login') }}">I already have an account</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

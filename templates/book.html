@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+  <h2>{{ book.title }}</h2>
+  <p class="subtitle">Book details</p>
+
+  <div class="card">
+    <p><b>Author:</b> {{ book.author }}</p>
+    <p><b>Year:</b> {{ book.year }}</p>
+    <p><b>ISBN:</b> {{ book.isbn }}</p>
+
+    <div class="hr"></div>
+    <a class="btn btn-secondary" href="{{ url_for('search') }}">← Back to Search</a>
+  </div>
+{% endblock %}
